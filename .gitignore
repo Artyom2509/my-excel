@@ -1,4 +1,4 @@
 .git
 node_modules/
 requirements.txt
-
+debug.log
