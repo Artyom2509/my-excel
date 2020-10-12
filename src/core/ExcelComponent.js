@@ -6,7 +6,11 @@ export class ExcelComponent extends DOMListener {
     this.name = options.name || '';
     this.listeners = options.listeners || [];
     this.$root = $root;
+
+    this.prepare();
   }
+
+  prepare() {}
 
   // Возвращает шаблон компонента
   toHTML() {
