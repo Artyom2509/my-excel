@@ -6,11 +6,20 @@ class Dom {
 
   html(html) {
     if (typeof html === 'string') {
-      this.$el.innerHTML = html;
+      this.$el.innerHTML = html.trim();
       return this;
     }
 
     return this.$el.outerHTML.trim();
+  }
+
+  text(text) {
+    // if (typeof text === 'string') {
+    //   this.$el.textContent = text.trim();
+    //   return this;
+    // }
+
+    return this.$el.textContent = text;
   }
 
   clear() {
@@ -58,6 +67,11 @@ class Dom {
 
   findAll(selector) {
     return this.$el.querySelectorAll(selector);
+  }
+
+  focus() {
+    this.$el.focus();
+    return this;
   }
 
   id(parse) {

@@ -12,7 +12,7 @@ export class TableSelection {
     this.current = $el;
 
     this.group.push($el);
-    $el.addClass(TableSelection.className);
+    $el.focus().addClass(TableSelection.className);
   }
 
   clear() {
