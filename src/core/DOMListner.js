@@ -10,7 +10,6 @@ export class DOMListener {
   }
 
   initDOMListners() {
-    // console.log(this.listeners, this.$root);
     this.listeners.forEach(listener => {
       const method = getMethodName(listener);
       if (!this[method]) {

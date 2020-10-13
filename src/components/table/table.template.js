@@ -3,10 +3,35 @@ const CODES = {
   Z: 90,
 }
 
+<<<<<<< HEAD
 function toCell(_, col) {
   return `
     <div class="cell" contenteditable data-col="${col}"></div>
   `
+=======
+// Пример без замыкания
+// function toCell(row, col) {
+// return `
+//   <div class="cell"
+//     contenteditable
+//     data-col="${col}"
+//     data-row="${row}">
+//   </div>`
+// }
+
+// Пример с замыканием
+function toCell(row) {
+  return function(_, col) {
+    return `
+      <div class="cell" 
+        contenteditable 
+        data-col="${col}" 
+        data-type="cell"
+        data-id="${row}:${col}">
+      </div>
+    `
+  }
+>>>>>>> table-logic
 }
 
 function createRow( index, content ) {
@@ -49,13 +74,14 @@ export function createTable( rowsCount = 15 ) {
       .join( '' )
 
   rows.push( createRow( null, cols ) );
-  for ( let i = 0; i < rowsCount; i++ ) {
+  for ( let row = 0; row < rowsCount; row++ ) {
     const cells = new Array( colsCount )
         .fill( '' )
-        .map( toCell )
+        // .map( (_, col) => toCell(row, col) ) // Пример без замыкания
+        .map(toCell(row)) // Пример с замыканием
         .join( '' )
 
-    rows.push( createRow( i + 1, cells ) );
+    rows.push( createRow( row + 1, cells ) );
   }
 
   return rows.join( '' );
