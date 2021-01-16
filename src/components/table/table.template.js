@@ -27,8 +27,8 @@ function toCell(state, row) {
       >
       ${parse(data) || ''}
       </div>
-    `;
-  };
+    `
+  }
 }
 
 function createRow(index, content, state) {
