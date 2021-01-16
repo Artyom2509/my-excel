@@ -6,7 +6,10 @@ export class ExcelComponent extends DOMListener {
     this.name = options.name || '';
     this.listeners = options.listeners || [];
     this.$root = $root;
+    this.store = options.store;
     this.emitter = options.emitter;
+    this.subscribe = options.subscribe || [];
+
     this.unsubscribers = [];
 
     this.prepare();
@@ -23,9 +26,22 @@ export class ExcelComponent extends DOMListener {
     this.unsubscribers.push(unsub);
   }
 
+  $dispatch(action) {
+    this.store.dispatch(action);
+  }
+
+  isWathing(key) {
+    return this.subscribe.includes(key)
+  }
+
   // Возвращает шаблон компонента
   toHTML() {
     return '';
+  }
+
+  // Сюда приходят изменения по тем полям на которые мы подписались
+  storeChanged() {
+
   }
 
   init() {
