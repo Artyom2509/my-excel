@@ -1,7 +1,10 @@
+/* eslint-disable operator-linebreak */
 class Dom {
   constructor(selector) {
-    this.$el = typeof selector === 'string' ?
-    document.querySelector(selector) : selector;
+    this.$el =
+      typeof selector === 'string'
+        ? document.querySelector(selector)
+        : selector;
   }
 
   html(html) {
@@ -14,8 +17,8 @@ class Dom {
   }
 
   text(text) {
-    if (typeof text === 'string') {
-      this.$el.textContent = text.trim();
+    if (typeof text !== 'undefined') {
+      this.$el.textContent = text
       return this;
     }
     if (this.$el.tagName.toLowerCase() === 'input') {
@@ -30,11 +33,19 @@ class Dom {
   }
 
   on(eventType, callback) {
-    this.$el.addEventListener(eventType, callback)
+    this.$el.addEventListener(eventType, callback);
   }
 
   off(eventType, callback) {
-    this.$el.removeEventListener(eventType, callback)
+    this.$el.removeEventListener(eventType, callback);
+  }
+
+  attr(name, value) {
+    if (value) {
+      this.$el.setAttribute(name, value);
+      return this;
+    }
+    this.$el.getAttribute(name);
   }
 
   append(node) {
@@ -56,7 +67,7 @@ class Dom {
   }
 
   getCoords() {
-    return this.$el.getBoundingClientRect()
+    return this.$el.getBoundingClientRect();
   }
 
   get data() {
@@ -82,17 +93,22 @@ class Dom {
       return {
         row: +parsed[0],
         col: +parsed[1],
-      }
+      };
     }
     return this.data.id;
   }
 
   css(styles = {}) {
-    Object
-        .keys(styles)
-        .forEach(key => {
-          this.$el.style[key] = styles[key]
-        });
+    Object.keys(styles).forEach((key) => {
+      this.$el.style[key] = styles[key];
+    });
+  }
+
+  getStyles(styles = []) {
+    return styles.reduce((res, s) => {
+      res[s] = this.$el.style[s];
+      return res;
+    }, {});
   }
 
   addClass(className) {
@@ -114,4 +130,4 @@ $.create = (tagname, classes = '') => {
     el.classList.add(classes);
   }
   return $(el);
-}
+};

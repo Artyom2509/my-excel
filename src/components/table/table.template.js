@@ -3,23 +3,6 @@ const CODES = {
   Z: 90,
 }
 
-<<<<<<< HEAD
-function toCell(_, col) {
-  return `
-    <div class="cell" contenteditable data-col="${col}"></div>
-  `
-=======
-// Пример без замыкания
-// function toCell(row, col) {
-// return `
-//   <div class="cell"
-//     contenteditable
-//     data-col="${col}"
-//     data-row="${row}">
-//   </div>`
-// }
-
-// Пример с замыканием
 function toCell(row) {
   return function(_, col) {
     return `
@@ -31,7 +14,6 @@ function toCell(row) {
       </div>
     `
   }
->>>>>>> table-logic
 }
 
 function createRow( index, content ) {
