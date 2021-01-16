@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-export function shouldResize(event) {
-  return event.target.dataset.resize;
-}
-=======
 export function shouldResize( event ) {
   return event.target.dataset.resize;
 }
@@ -58,4 +53,3 @@ export function nextSelector( key, {col, row} ) {
 
   return `[data-id="${row}:${col}"]`;
 }
->>>>>>> table-logic

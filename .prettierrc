@@ -1,0 +1,22 @@
+{
+  "arrowParens": "always",
+  "bracketSpacing": false,
+  "endOfLine": "lf",
+  "htmlWhitespaceSensitivity": "css",
+  "insertPragma": false,
+  "jsxBracketSameLine": true,
+  "jsxSingleQuote": false,
+  "printWidth": 80,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "requirePragma": false,
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "useTabs": false,
+  "arrow_parens": "as-needed",
+  "vueIndentScriptAndStyle": false,
+  "filepath": "d:\\Web\\homework\\1 js-lessons\\Владилен Минин\\EXCEL\\src\\index.js",
+  "parser": "babel"
+}
