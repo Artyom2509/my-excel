@@ -1,4 +1,4 @@
-import {isEqual} from '@core/utils.js'
+import {isEqual} from '@core/utils.js';
 
 export class StoreSubscriber {
   constructor(store) {
@@ -10,19 +10,23 @@ export class StoreSubscriber {
   subscribeComponents(components) {
     this.prevState = this.store.getState();
 
-    this.sub = this.store.subscribe(state => {
-      Object.keys(state).forEach(key => {
+    this.sub = this.store.subscribe((state) => {
+      Object.keys(state).forEach((key) => {
         if (!isEqual(this.prevState[key], state[key])) {
-          components.forEach(component => {
+          components.forEach((component) => {
             if (component.isWathing(key)) {
               const changes = {[key]: state[key]};
               component.storeChanged(changes);
             }
           });
         }
-      })
+      });
 
       this.prevState = this.store.getState();
+
+      if (process.env.NODE_ENV === 'development') {
+        window['redux'] = this.prevState;
+      }
     });
   }
 

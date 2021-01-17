@@ -37,14 +37,39 @@ export function toInlineStyles(styles = {}) {
 }
 
 export function debounce(fn, wait) {
-  let timeout
+  let timeout;
   return function(...args) {
     const later = () => {
-      clearTimeout(timeout)
-      fn.apply(this, args)
-    }
+      clearTimeout(timeout);
+      fn.apply(this, args);
+    };
 
-    clearTimeout(timeout)
+    clearTimeout(timeout);
     timeout = setTimeout(later, wait);
-  }
+  };
+}
+
+export function clone(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+export function formatDate(date) {
+  const d = new Date(date);
+  const year = d.getFullYear();
+  let month = '' + (d.getMonth() + 1);
+  let day = '' + d.getDate();
+  const hour = '' + d.getHours();
+  const minutes = '' + d.getMinutes();
+  const seconds = '' + d.getDate();
+
+  if (month.length < 2) month = '0' + month;
+  if (day.length < 2) day = '0' + day;
+
+  return (
+    [day, month, year].join('.') + ' ' + [hour, minutes, seconds].join(':')
+  );
+}
+
+export function preventDefault(event) {
+  event.preventDefault();
 }
