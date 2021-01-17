@@ -1,6 +1,6 @@
 ![Excel](https://learnexceltricks.com/wp-content/uploads/2020/01/logo.png "Logo Excel")
 
-# Приложение [Excel-table](https://artyom2509.github.io/my-excel/)
+# Приложение [Excel-Table](https://artyom2509.github.io/my-excel/)
 
 Приложение на чистом JavaScript, без использования библиотек и фреймворков, с помощью которого вы можете создавать и форматировать таблицы, а также работать над ними.
 
