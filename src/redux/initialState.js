@@ -1,6 +1,6 @@
 /* eslint-disable operator-linebreak */
-import {storage} from '@core/utils';
 import {defaultStyles, defaultTitle} from '../constants';
+import {clone} from '../core/utils';
 
 const defaultState = {
   rowState: {},
@@ -18,6 +18,6 @@ const normilize = (state) => ({
   currentText: '',
 });
 
-export const initialState = storage('excel-state')
-  ? normilize(storage('excel-state'))
-  : defaultState;
+export function normilizeInitialState(state) {
+  return state ? normilize(state) : clone(defaultState);
+}

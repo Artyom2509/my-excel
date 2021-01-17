@@ -1,10 +1,10 @@
 import $ from '@core/Dom';
 import {Emitter} from '../../core/Emmiter';
 import {StoreSubscriber} from '../../core/StoreSubscriber';
+import {preventDefault} from '../../core/utils';
 
 export class Excel {
-  constructor(selector, options) {
-    this.$el = $(selector);
+  constructor(options) {
     this.components = options.components || [];
     this.emitter = new Emitter();
     this.store = options.store;
@@ -16,34 +16,32 @@ export class Excel {
     const componentOptions = {
       emitter: this.emitter,
       store: this.store,
-    }
+    };
 
-    this.components = this.components.map(Component => {
+    this.components = this.components.map((Component) => {
       const $el = $.create('div', Component.className);
       const component = new Component($el, componentOptions);
-
-      // // DEBUG
-      // if (component.name) {
-      //   window['c' + component.name] = component;
-      // }
 
       $el.html(component.toHTML());
       $root.append($el);
       return component;
-    })
+    });
 
     return $root;
   }
 
-  render() {
-    this.$el.append(this.getRoot());
+  init() {
+    if (process.env.NODE_ENV === 'production') {
+      document.addEventListener('contextmenu', preventDefault);
+    }
 
     this.subscriber.subscribeComponents(this.components);
-    this.components.forEach(component => component.init());
+    this.components.forEach((component) => component.init());
   }
 
   destroy() {
     this.subscriber.unsubscribeFormStore();
-    this.components.forEach(component => component.destroy());
+    this.components.forEach((component) => component.destroy());
+    document.removeEventListener('contextmenu', preventDefault);
   }
 }
