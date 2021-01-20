@@ -1,6 +1,6 @@
 import {Page} from '@core/Page';
 // import $ from '@core/Dom';
-import {createStore} from '@core/createStore';
+import {createStore} from '@core/store/createStore';
 import {rootReduser} from '@/redux/rootReduser';
 import {normilizeInitialState} from '../redux/initialState';
 import {debounce, storage} from '../core/utils';
