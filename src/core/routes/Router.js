@@ -1,6 +1,6 @@
 /* eslint-disable operator-linebreak */
 /* eslint-disable no-invalid-this */
-import $ from '@core/Dom';
+import $ from '../Dom';
 import {ActiveRoute} from './ActiveRoute';
 
 export class Router {
